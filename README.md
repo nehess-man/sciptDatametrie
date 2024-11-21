@@ -17,11 +17,9 @@ Tâche 3 : Stocker les mesures dans un fichier temporaire.
 
 B   (Ew)
 
-Tâche 1 : Gestion du verrouillage pour éviter plusieurs instances.
+Tâche 1 : Planification avec une boucle toutes les 5 minutes.
 
-Tâche 2 : Planification avec une boucle toutes les 5 minutes.
-
-Tâche 3 : Lancer l’analyse des mesures stockées (min, max, moyenne).
+Tâche 2 : Lancer l’analyse des mesures stockées (min, max, moyenne).
 
 
 C  (Ya)
