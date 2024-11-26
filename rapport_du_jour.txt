@@ -1,4 +1,0 @@
-Rapport du jour
-Min : 165 ms
-Max : 165 ms
-Moy : 165 ms
