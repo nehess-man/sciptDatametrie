@@ -1,16 +1,14 @@
 #!/bin/bash
 
-echo "=== Début de l'exécution des scripts ==="
+# Script principal : main.sh
+# Ce script exécute tous les autres scripts nécessaires dans l'ordre
 
-# Exécuter les scripts précédents dans l'ordre
 ./ping_url.sh
 ./charge_page.sh
 ./stocke_donnees.sh
 ./analyse_mesures.sh
 ./genere_rapport.sh
+./envoi_mail.sh
 
-# Envoyer le rapport par email
-echo "Tâche 6 : Envoi du rapport au DSI"
-
-
+# Affichage de la fin de l'exécution
 echo "=== Fin de l'exécution des scripts ==="
