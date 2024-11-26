@@ -1,0 +1,51 @@
+DÉBUT
+
+// Initialisation
+CHARGER configuration depuis config.sh
+INITIALISER variables nécessaires (liste_URLs, chemin_fichiers, etc.)
+SI mesures.csv n'existe pas ALORS
+    CRÉER mesures.csv
+    ÉCRIRE en-tête ("Date,URL,Ping Status,Temps de chargement (s)")
+FIN SI
+
+TANT QUE vrai FAIRE
+    POUR CHAQUE URL DANS liste_URLs FAIRE
+        // Test de ping
+        EXÉCUTER ping sur URL
+        SI succès ALORS
+            ping_status = "Réussi"
+        SINON
+            ping_status = "Échoué"
+        FIN SI
+
+        // Mesure du temps de chargement
+        MESURER temps_chargement de URL
+        SI erreur ALORS
+            temps_chargement = "Erreur"
+        FIN SI
+
+        // Enregistrement des résultats
+        AJOUTER (date, URL, ping_status, temps_chargement) DANS mesures.csv
+    FIN POUR
+
+    // Analyse des données
+    EXTRAIRE temps_chargement depuis mesures.csv
+    SI données disponibles ALORS
+        CALCULER min_temps, max_temps, moyenne_temps
+        GÉNÉRER rapport_du_jour.txt contenant (min_temps, max_temps, moyenne_temps)
+    SINON
+        ÉCRIRE "Aucune donnée disponible" DANS rapport_du_jour.txt
+    FIN SI
+
+    // Envoi du rapport par e-mail
+    SI rapport_du_jour.txt existe ALORS
+        ENVOYER rapport_du_jour.txt par e-mail au DSI
+        AFFICHER "Rapport envoyé avec succès"
+    SINON
+        AFFICHER "Erreur : rapport non trouvé"
+    FIN SI
+
+    ATTENDRE intervalle
+FIN TANT QUE
+
+FIN
